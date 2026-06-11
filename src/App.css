@@ -1,3 +1,141 @@
 body{
   font-family:Arial, sans-serif;
 }
+.app {
+  min-height: 100vh;
+  background-color: #F8F7F4;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  color: #B8A1E3;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #4B4B4B;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.task-form,
+.task-list {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.task-form h2,
+.task-list h2 {
+  color: #4B4B4B;
+  margin-bottom: 1rem;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.task-form button {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #A8CBB7;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.task-form button:hover {
+  opacity: 0.9;
+}
+
+.task-card {
+  border-left: 6px solid #E9A29B;
+  background-color: #fffaf9;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.task-card h3 {
+  margin-bottom: 0.5rem;
+  color: #4B4B4B;
+}
+
+.task-card p {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.task-card span {
+  color: #E9A29B;
+  font-weight: bold;
+}
+.task-date {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.top-section {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.upcoming-tasks {
+  width: 280px;
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.upcoming-tasks h2 {
+  color: #B8A1E3;
+  margin-bottom: 1rem;
+}
+
+.upcoming-card {
+  background-color: #f3ecff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.upcoming-card p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.upcoming-card span {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+  }
+
+  .upcoming-tasks {
+    width: 100%;
+  }
+}
