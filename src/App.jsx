@@ -30,6 +30,15 @@ function App() {
     setPriority('Media');
   }
 
+  function handleDeleteTask(id) {
+    const confirmDelete = window.confirm("¿Deseas eliminar esta tarea?");
+    if(!confirmDelete){
+      return;
+    }
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+  }
+
   return (
     <div className="app">
       <header className="header">
@@ -113,8 +122,15 @@ function App() {
                   📅 {task.date}
                 </p>
                 <p>{task.description}</p>
+                
                 <span>{task.priority} Prioridad</span>
+                <div className="task-actions">
+                <button className= "delete-btn"
+                onClick={() => handleDeleteTask(task.id)}>
+                Eliminar
+                </button>
               </div>
+            </div>
             ))}
 
           </section>
