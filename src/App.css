@@ -86,8 +86,10 @@ body{
 }
 
 .task-card span {
+  display: block;
   color: #E9A29B;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 .task-date {
   color: #777;
@@ -99,7 +101,19 @@ body{
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
-
+.delete-btn {
+  margin-top: 1rem;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #E9A29B;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.delete-btin:hover{
+  opacity: 0.9;
+}
 .upcoming-tasks {
   width: 280px;
   background: white;
