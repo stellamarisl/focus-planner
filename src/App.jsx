@@ -8,6 +8,7 @@ function App() {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [priority, setPriority] = useState('Media');
+  const [filter, setFilter] = useState('all');
 
   function handleAddTask() {
     if(!title.trim() || !description.trim() || !date){
@@ -47,6 +48,20 @@ function App() {
     });
     setTasks(updatedTasks);
   }
+
+    
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "completed") {
+      return task.completed;
+    }
+  
+    if (filter === "pending") {
+      return !task.completed;
+    }
+  
+    return true;
+  });
+  
 
   return (
     <div className="app">
@@ -123,8 +138,16 @@ function App() {
 
           <section className="task-list">
             <h2>Mis tareas</h2>
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              <option value="all">Todas</option>
+              <option value="completed">Completadas</option>
+              <option value="pending">Pendientes</option>
+            </select>
 
-            {tasks.map((task) => (
+            {filteredTasks.map((task) => (
               <div
                 key={task.id}
                 className={`task-card ${task.completed ? "completed" : ""}`}
