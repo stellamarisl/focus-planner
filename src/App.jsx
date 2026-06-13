@@ -38,14 +38,10 @@ function App() {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
   }
-
-  function handleToggleComplete(id){
-    const updatedTasks = tasks.map((task) =>{
-      if (task.id === id){
-        return{
-          ...task,
-          completed: !task.completed,
-        };
+  function handleToggleComplete(id) {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
       }
       return task;
     });
@@ -130,22 +126,23 @@ function App() {
 
             {tasks.map((task) => (
               <div
-              key={task.id}
-              className={`task-card ${task.completed ? "completed" : ""}`}>
+                key={task.id}
+                className={`task-card ${task.completed ? "completed" : ""}`}
+              >
                 <h3>{task.title}</h3>
                 <p className="task-date">
                   📅 {task.date}
                 </p>
-
                 <p>{task.description}</p>
                 
                 <span>{task.priority} Prioridad</span>
                 <div className="task-actions">
-
-                <button className= "complete-btn"
-                onClick={() => handleToggleComplete(task.id)}>
-                  {task.completed ? "Deshacer" : "Completar"}
-                </button>
+                  <button
+                    className="complete-btn"
+                    onClick={() => handleToggleComplete(task.id)}
+                  >
+                    {task.completed ? "Desmarcar" : "Completada"}
+                  </button>
 
                 <button className= "delete-btn"
                 onClick={() => handleDeleteTask(task.id)}>
