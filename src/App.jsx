@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Todo from './components/Todo';
 import './App.css';
 
 function App() {
@@ -156,31 +157,12 @@ function App() {
             </select>
 
             {filteredTasks.map((task) => (
-              <div
+              <Todo
                 key={task.id}
-                className={`task-card ${task.completed ? "completed" : ""}`}
-              >
-                <h3>{task.title}</h3>
-                <p className="task-date">
-                  📅 {task.date}
-                </p>
-                <p>{task.description}</p>
-                
-                <span>{task.priority} Prioridad</span>
-                <div className="task-actions">
-                  <button
-                    className="complete-btn"
-                    onClick={() => handleToggleComplete(task.id)}
-                  >
-                    {task.completed ? "Desmarcar" : "Completada"}
-                  </button>
-
-                <button className= "delete-btn"
-                onClick={() => handleDeleteTask(task.id)}>
-                Eliminar
-                </button>
-              </div>
-            </div>
+                task={task}
+                handleToggleComplete={handleToggleComplete}
+                handleDeleteTask={handleDeleteTask}
+              />
             ))}
 
           </section>
