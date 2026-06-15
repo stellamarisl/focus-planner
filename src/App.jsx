@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
+import Form from './components/Form';
 import './App.css';
 
 function App() {
@@ -82,47 +83,17 @@ function App() {
         <main className="container">
           <div className = "top-section"> 
 
-              <section className="task-form">
-                  <h2>Nueva tarea</h2>
-
-                  <input
-                  id="title"
-                  name="title"
-                  type="text"
-                  placeholder="Título de la tarea"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  />
-
-                  <textarea
-                  id="description"
-                  name="description"
-                  placeholder="Descripción"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  ></textarea>
-
-                  <input
-                  id="date"
-                  name="date"
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  />
-
-                <select
-                  id="priority"
-                  name="priority"
-                  value={priority}
-                  onChange={(e) => setPriority(e.target.value)}
-                >
-                  <option>Alta</option>
-                  <option>Media</option>
-                  <option>Baja</option>
-                </select>
-
-                <button onClick={handleAddTask}>Agregar tarea</button>
-              </section>
+          <Form
+              title={title}
+              setTitle={setTitle}
+              description={description}
+              setDescription={setDescription}
+              date={date}
+              setDate={setDate}
+              priority={priority}
+              setPriority={setPriority}
+              handleAddTask={handleAddTask}
+          /> 
 
             <aside className="upcoming-tasks">
               <h2>Próximos días</h2>
