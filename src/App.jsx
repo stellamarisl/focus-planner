@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Todo from './components/Todo';
+import TodoList from './components/TodoList';
 import './App.css';
 
 function App() {
@@ -156,14 +156,11 @@ function App() {
               <option value="pending">Pendientes</option>
             </select>
 
-            {filteredTasks.map((task) => (
-              <Todo
-                key={task.id}
-                task={task}
+              <TodoList
+                tasks={filteredTasks}
                 handleToggleComplete={handleToggleComplete}
                 handleDeleteTask={handleDeleteTask}
               />
-            ))}
 
           </section>
 
