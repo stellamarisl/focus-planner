@@ -116,10 +116,17 @@ function App() {
 
             <aside className="upcoming-tasks">
               <h2>Próximos días</h2>
-              {Object.entries(groupedTasks).map(([date, tasks]) => (
+
+              {Object.entries(groupedTasks).map(([date, tasks])  => {
+                const formattedDate = new Date(date).toLocaleDateString("es-AR", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "2-digit",
+                });
+                return(
               <div key={date} className="upcoming-card">
                 <p>
-                  📅 {date} ({tasks.length})
+                  📅 {formattedDate} ({tasks.length})
                 </p>
 
                   {tasks.map((task) => (
@@ -133,13 +140,12 @@ function App() {
                         🗑
                         </button>
                     </div>
-                ))}
-  </div>
-))}
-
+              ))}
+              </div>
+              );
+        })}
             </aside>
-            </div>
-
+          </div> 
           <section className="task-list">
             <h2>Mis tareas</h2>
             <select
