@@ -59,8 +59,26 @@ function App() {
     setTasks(updatedTasks);
   }
 
-    
-  const filteredTasks = tasks.filter((task) => {
+  //Fecha actual  
+  const today = new Date().toISOString().split("T")[0];
+  //Tareas de hoy
+  const todayTasks = tasks.filter(
+    (task) => task.date === today  
+  );
+  //Tareas futuras 
+  const futureTasks = tasks.filter(
+    (task) => task.date > today && !task.completed
+  );
+  //Agrupar tareas futuras por fecha
+  const groupedTasks = {};
+  futureTasks.forEach((task) => {
+    if (!groupedTasks[task.date]) {
+      groupedTasks[task.date] = [];
+    }
+    groupedTasks[task.date].push(task);
+  });
+  
+  const filteredTasks = todayTasks.filter((task) => {
     if (filter === "completed") {
       return task.completed;
     }
@@ -71,6 +89,7 @@ function App() {
   
     return true;
   });
+
   
 
   return (
@@ -97,24 +116,29 @@ function App() {
 
             <aside className="upcoming-tasks">
               <h2>Próximos días</h2>
+              {Object.entries(groupedTasks).map(([date, tasks]) => (
+              <div key={date} className="upcoming-card">
+                <p>
+                  📅 {date} ({tasks.length})
+                </p>
 
-              <div className = "upcoming-card">
-                <p>📅18/06/2026</p>
-                <span> 2 tareas programadas</span>
-              </div>
+                  {tasks.map((task) => (
+                    <div key={task.id} className="upcoming-task">
+                      <span>{task.title}</span>
 
-              <div className="upcoming-card">
-                <p> 📅20/06/2026</p>
-                <span>1 tarea programada</span>
-              </div>
-
-              <div className="upcoming-card">
-                <p> 📅22/06/2026</p>
-                <span>4 tareas programadas</span>
-              </div>
+                        <button
+                          className="delete-btn"
+                          onClick={() => handleDeleteTask(task.id)}
+                        >
+                        🗑
+                        </button>
+                    </div>
+                ))}
+  </div>
+))}
 
             </aside>
-          </div>
+            </div>
 
           <section className="task-list">
             <h2>Mis tareas</h2>
