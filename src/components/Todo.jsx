@@ -1,5 +1,10 @@
 //Componente para tareas individuales
 function Todo({ task, handleToggleComplete, handleDeleteTask }) {
+    const formattedDate = new Date(task.date).toLocaleDateString("es-AR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+    });
     return (
         <div
             className={`task-card ${task.completed ? "completed" : ""}`}
@@ -7,7 +12,7 @@ function Todo({ task, handleToggleComplete, handleDeleteTask }) {
             <h3>{task.title}</h3>
 
             <p className="task-date">
-                📅 {task.date}
+                📅 {formattedDate}
             </p>
 
             <p>{task.description}</p>
