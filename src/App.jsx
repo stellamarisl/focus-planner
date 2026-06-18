@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import Form from './components/Form';
+import Swal from "sweetalert2";
 import './App.css';
 
 function App() {
@@ -22,7 +23,11 @@ function App() {
 
   function handleAddTask() {
     if(!title.trim() || !description.trim() || !date){
-      alert("Completa todos los campos para agregar una tarea.");
+      Swal.fire ({
+        icon: "warning",
+        title: "Campos incompletos",
+        text: "Completa todos los campos para agregar una tarea"
+      });
         return;
     }
     const newTask = {
@@ -86,12 +91,10 @@ function App() {
     if (filter === "pending") {
       return !task.completed;
     }
-  
     return true;
   });
 
   
-
   return (
     <div className="app">
       <header className="header">
@@ -118,11 +121,8 @@ function App() {
               <h2>Próximos días</h2>
 
               {Object.entries(groupedTasks).map(([date, tasks])  => {
-                const formattedDate = new Date(date).toLocaleDateString("es-AR", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "2-digit",
-                });
+                const [year, month, day] = date.split("-");
+                const formattedDate = `${day}/${month}/${year}`;
                 return(
               <div key={date} className="upcoming-card">
                 <p>

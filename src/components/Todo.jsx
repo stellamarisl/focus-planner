@@ -1,10 +1,9 @@
+import {FaTrash} from "react-icons/fa";
+
 //Componente para tareas individuales
 function Todo({ task, handleToggleComplete, handleDeleteTask }) {
-    const formattedDate = new Date(task.date).toLocaleDateString("es-AR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "2-digit",
-    });
+    const [year, month, day] = task.date.split("-");
+    const formattedDate = `${day}/${month}/${year}`;
     return (
         <div
             className={`task-card ${task.completed ? "completed" : ""}`}
@@ -31,7 +30,7 @@ function Todo({ task, handleToggleComplete, handleDeleteTask }) {
                     className="delete-btn"
                     onClick={() => handleDeleteTask(task.id)}
                 >
-                    Eliminar
+                    <FaTrash/>
                 </button>
             </div>
         </div>
