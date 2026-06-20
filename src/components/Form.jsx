@@ -25,6 +25,7 @@ function Form({
         <textarea
           id="description"
           name="description"
+          type="text"
           placeholder="Descripción"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
