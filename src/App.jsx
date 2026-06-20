@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import Form from './components/Form';
+import {BsTrash, BsCalendar2Date} from "react-icons/bs";
 import Swal from "sweetalert2";
 import './App.css';
 
@@ -16,11 +17,12 @@ function App() {
   const [priority, setPriority] = useState('Media');
   const [filter, setFilter] = useState('all');
 
-  
+  //Persistencia en Local Storage
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
+  //Agregar tarea
   function handleAddTask() {
     if(!title.trim() || !description.trim() || !date){
       Swal.fire ({
@@ -40,20 +42,46 @@ function App() {
     };
 
     setTasks([...tasks, newTask]);
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: "Tarea agregada",
+      showConfirmButton: false,
+      timer: 1500
+    });
     setTitle('');
     setDescription('');
     setDate('');
     setPriority('Media');
   }
 
+  //Eliminar tarea
   function handleDeleteTask(id) {
-    const confirmDelete = window.confirm("¿Deseas eliminar esta tarea?");
-    if(!confirmDelete){
-      return;
+    Swal.fire({
+      title: "¿Eliminar tarea?",
+      text: "Esta acción no se puede deshacer",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedTasks = tasks.filter(
+            (task) => task.id !== id
+          );
+    
+          setTasks(updatedTasks);
+    
+          Swal.fire({
+            title: "Eliminada",
+            text: "La tarea fue eliminada correctamente",
+            icon: "success",
+          });
+        }
+      });
     }
-    const updatedTasks = tasks.filter((task) => task.id !== id);
-    setTasks(updatedTasks);
-  }
+  //Completar tarea  
   function handleToggleComplete(id) {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
@@ -83,6 +111,7 @@ function App() {
     groupedTasks[task.date].push(task);
   });
   
+  //Filtrar tareas por estado
   const filteredTasks = todayTasks.filter((task) => {
     if (filter === "completed") {
       return task.completed;
@@ -126,7 +155,8 @@ function App() {
                 return(
               <div key={date} className="upcoming-card">
                 <p>
-                  📅 {formattedDate} ({tasks.length})
+                  <BsCalendar2Date />
+                  {formattedDate} ({tasks.length})
                 </p>
 
                   {tasks.map((task) => (
@@ -137,7 +167,7 @@ function App() {
                           className="delete-btn"
                           onClick={() => handleDeleteTask(task.id)}
                         >
-                        🗑
+                        <BsTrash/>
                         </button>
                     </div>
               ))}

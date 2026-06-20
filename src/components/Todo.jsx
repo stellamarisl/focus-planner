@@ -1,5 +1,5 @@
-import {FaTrash} from "react-icons/fa";
-
+import { BsTrash, BsCalendar2Date, BsCheckCircle } from "react-icons/bs";
+import { FcHighPriority, FcMediumPriority, FcLowPriority } from "react-icons/fc";
 //Componente para tareas individuales
 function Todo({ task, handleToggleComplete, handleDeleteTask }) {
     const [year, month, day] = task.date.split("-");
@@ -11,26 +11,31 @@ function Todo({ task, handleToggleComplete, handleDeleteTask }) {
             <h3>{task.title}</h3>
 
             <p className="task-date">
-                📅 {formattedDate}
+                <BsCalendar2Date /> {formattedDate}
             </p>
 
             <p>{task.description}</p>
 
-            <span>{task.priority} Prioridad</span>
+            <p>
+                {task.priority === "Alta" && <FcHighPriority />}
+                {task.priority === "Media" && <FcMediumPriority />}
+                {task.priority === "Baja" && <FcLowPriority />}
+                {task.priority} Prioridad
+            </p>
 
             <div className="task-actions">
                 <button
                     className="complete-btn"
                     onClick={() => handleToggleComplete(task.id)}
                     >
-                    {task.completed ? "Desmarcar" : "Completar"}
+                        <BsCheckCircle /> {task.completed ? "Desmarcar" : "Completar"}
                 </button>
 
                 <button
                     className="delete-btn"
                     onClick={() => handleDeleteTask(task.id)}
                 >
-                    <FaTrash/>
+                    <BsTrash/>
                 </button>
             </div>
         </div>
