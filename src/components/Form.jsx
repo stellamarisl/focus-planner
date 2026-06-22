@@ -34,12 +34,11 @@ function Form({
         ></textarea>
 
         <label htmlFor="date" className="form-label">
-          <BsCalendar2Date/>
-          Fecha
+          <BsCalendar2Date/> Fecha
         </label>
         <input
           id="date"
-          name="date"
+          name= "date" 
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
