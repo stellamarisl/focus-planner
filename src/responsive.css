@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+    .top-section {
+        flex-direction: column;
+    }
+
+    .upcoming-tasks {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2.3rem;
+    }
+
+    .app {
+        padding: 1rem;
+    }
+
+    .task-form,
+    .task-list,
+    .upcoming-tasks {
+    padding: 1rem;
+    }
+
+    
+}

@@ -1,16 +1,67 @@
-# React + Vite
+# Focus Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React para organizar tareas, gestionar prioridades y visualizar actividades pendientes de manera simple e intuitiva.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Crear tareas con título, descripción, fecha y prioridad.
+* Marcar tareas como completadas.
+* Eliminar tareas con confirmación mediante SweetAlert2.
+* Filtrar tareas por estado:
+  * Todas
+  * Completadas
+  * Pendientes
+* Visualizar tareas futuras agrupadas por fecha.
+* Persistencia de datos mediante Local Storage.
+* Diseño responsive para dispositivos móviles y tablets.
+* Interfaz moderna con React Icons.
 
-## React Compiler
+## Capturas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Vista principal (1024px)
 
-## Expanding the ESLint configuration
+![Vista principal](./screenshots/1024.JPG)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Vista principal (768px)
+
+![Vista principal](./screenshots/768.JPG)
+
+## Tecnologías utilizadas
+
+* React
+* JavaScript
+* CSS3
+* React Icons
+* SweetAlert2
+* Local Storage
+* Git y GitHub
+
+## Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/stellamarisl/focus-planner.git
+```
+
+Ingresar al proyecto:
+
+```bash
+cd focus-planner
+```
+
+Instalar dependencias:
+
+```bash
+pnpm install
+```
+
+Ejecutar el proyecto:
+
+```bash
+pnpm run dev
+```
+
+## Autor
+
+Desarrollado por Stella Maris Loreto como proyecto de práctica en React.
