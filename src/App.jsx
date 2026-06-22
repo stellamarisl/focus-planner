@@ -4,6 +4,7 @@ import Form from './components/Form';
 import {BsTrash, BsCalendar2Date} from "react-icons/bs";
 import Swal from "sweetalert2";
 import './App.css';
+import './responsive.css';
 
 function App() {
   const [tasks, setTasks] = useState(() => {
@@ -179,6 +180,8 @@ function App() {
           <section className="task-list">
             <h2>Mis tareas</h2>
             <select
+              id="filter"
+              name="filter"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             >

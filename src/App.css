@@ -226,12 +226,3 @@ body{
 }
 
 
-@media (max-width: 768px) {
-  .top-section {
-    flex-direction: column;
-  }
-
-  .upcoming-tasks {
-    width: 100%;
-  }
-}
