@@ -2,6 +2,10 @@
 
 Aplicación web desarrollada con React para organizar tareas, gestionar prioridades y visualizar actividades pendientes de manera simple e intuitiva.
 
+## Demo
+
+[Probar Focus Planner](https://focus-planner-xi.vercel.app/)
+
 ## Funcionalidades
 
 * Crear tareas con título, descripción, fecha y prioridad.
