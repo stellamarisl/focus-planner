@@ -1,3 +1,5 @@
+import { BsCalendar2Date } from "react-icons/bs";
+
 function Form({
     title,
     setTitle,
@@ -12,7 +14,7 @@ function Form({
     return (
       <section className="task-form">
         <h2>Nueva tarea</h2>
-  
+
         <input
           id="title"
           name="title"
@@ -30,7 +32,11 @@ function Form({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-  
+
+        <label htmlFor="date" className="form-label">
+          <BsCalendar2Date/>
+          Fecha
+        </label>
         <input
           id="date"
           name="date"

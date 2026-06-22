@@ -90,6 +90,15 @@ body{
   font-family: inherit;
 }
 
+.form-label{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 
 .task-form button {
   width: 100%;
